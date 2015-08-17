@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'conferences/index'
+
+  get 'conferences/show'
+
+	root "conferences#index"
   
   resources :users, only: [:create, :update]
   get "/signup", to: "users#new", as: :signup
@@ -8,5 +14,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   get "/login", to: "sessions#new", as: :login
   get "/logout", to: "sessions#destroy", as: :logout
+
+  resources :conferences, only: [:index, :show]
 
 end
