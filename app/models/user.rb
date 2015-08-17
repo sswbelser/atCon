@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
                       length: {minimum: 6}
 
  has_attached_file :avatar,
-                 :styles => { :medium => "150x150>", :thumb => "44x44#>" },
+                 :styles => { :medium => "150x150>", :thumb => "44x44#" },
                  :storage => :s3,
                  :s3_credentials => Proc.new { |a| a.instance.s3_credentials },
                  :path => "avatars/:id/:style/avatar.:extension",
@@ -26,3 +26,6 @@ class User < ActiveRecord::Base
   end
                        
 end
+
+
+

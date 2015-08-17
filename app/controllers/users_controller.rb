@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       if user.save
         session[:user_id] = user.id
         flash[:notice] = "Successfully signed up."
-        redirect_to conferences_path
+        redirect_to profile_path #conferences_path
       else
         flash[:error] = user.errors.full_messages.join(', ')
         redirect_to signup_path
@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
     render :show
   end
 
