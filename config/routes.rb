@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root to: "users#new"
   
   resources :users, only: [:create, :update]
   get "/signup", to: "users#new", as: :signup
