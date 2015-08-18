@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'conferences/index'
 
-  get 'conferences/show'
 
 	root "conferences#index"
   
