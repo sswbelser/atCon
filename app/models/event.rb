@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
-	belongs_to :user, :category, :conference
+	belongs_to :user
+	belongs_to :category 
+	belongs_to :conference
 	has_many :posts
 end
