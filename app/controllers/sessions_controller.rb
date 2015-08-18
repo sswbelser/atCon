@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if current_user
-      redirect_to profile_path
+      redirect_to '/profile'
     else
       render :new
     end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def new
     # redirect user if already logged in
     if current_user
-      redirect_to conferences_path
+      redirect_to root_path
     else
       render :new
     end
@@ -20,13 +20,13 @@ class UsersController < ApplicationController
   def create
     # redirect user if already logged in
     if current_user
-      redirect_to conferences_path
+      redirect_to root_path
     else
       user = User.new(user_params)
       if user.save
         session[:user_id] = user.id
         flash[:notice] = "Successfully signed up."
-        redirect_to profile_path #conferences_path
+        redirect_to profile_path #root_path
       else
         flash[:error] = user.errors.full_messages.join(', ')
         redirect_to signup_path
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
       flash[:error] = "Successfully deleted profile!"
       session[:user_id] = nil
       user.delete
-      redirect_to conferences_path
+      redirect_to root_path
     end
   end
 
