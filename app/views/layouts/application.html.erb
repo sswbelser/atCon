@@ -27,7 +27,7 @@
 			<% if logged_in? %>
 				<a class="btn navbar-btn navbar-right btn-warning" href="/logout">Log out</a>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="navbar-header" href="/profile"><%= image_tag current_user.avatar.url(:thumb), class: "navbar-thumb" %>&nbsp&nbsp<%= current_user.username %></a></li>
+					<li><a class="navbar-header" href="/profile"><%= image_tag current_user.avatar.url(:thumb), class: "navbar-thumb" %>&nbsp&nbsp<%= current_user.first_name %></a></li>
 				</ul>
 			<% else %>
 				<a class="btn navbar-btn navbar-right btn-default" href="/login">Login</a>
