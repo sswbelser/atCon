@@ -37,14 +37,20 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
+    puts "this is the user params--#{user_params}"
     if current_user
-      flash[:notice] = "Successfully updated profile!"
-      user.update_attributes(user_params)
-      redirect_to profile_path
+       if  user.update_attributes(user_params)
+         redirect_to profile_path
+         flash[:notice] = "Successfully updated profile!"
+       else
+        flash[:error] = user.errors.full_messages.join(', ')
+        redirect_to edit_profile_path    
+       end
     else
       flash[:error] = user.errors.full_messages.join(', ')
       redirect_to edit_profile_path
     end
+
   end
 
   def edit
@@ -52,10 +58,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
     if current_user
       flash[:error] = "Successfully deleted profile!"
-      user.destroy
+      session[:user_id] = nil
+      user.delete
       redirect_to conferences_path
     end
   end
