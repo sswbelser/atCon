@@ -1,0 +1,6 @@
+<% @users.each do |u| %>
+	<p><%= u.first_name %></p>
+	<%= u.avatar.url %>
+	<%= image_tag u.avatar.url %>
+<% end %>
+
