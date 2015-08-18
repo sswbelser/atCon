@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Atcon</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+	<title>atCon</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<%= csrf_meta_tags %>
+
+	<!-- bootstrap css -->
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<%= stylesheet_link_tag :application, media: :all %>
+
 </head>
 <body>
 
-<%= yield %>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">atCon</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-right">
+			<% if logged_in? %>
+				<a class="btn navbar-btn navbar-right btn-warning" href="/logout">Log out</a>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="navbar-header" href="/profile"><%= image_tag current_user.avatar.url(:thumb), class: "navbar-thumb" %>&nbsp&nbsp<%= current_user.first_name %></a></li>
+				</ul>
+			<% else %>
+				<a class="btn navbar-btn navbar-right btn-default" href="/login">Login</a>
+				<a class="btn navbar-btn navbar-right btn-primary" href="/signup">Sign Up</a>
+			<% end %>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container text-center">
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, class: "alert #{name == 'error' ? 'alert-danger' : 'alert-info'}" %>
+		<% end %>
+	</div>
+	
+	<%= yield %>
+
+	<%= javascript_include_tag :application %>
+
+	<!-- bootstrap js -->
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </body>
 </html>

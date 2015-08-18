@@ -1,0 +1,34 @@
+.navbar-thumb {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	position: absolute;
+	display: inline;
+	margin-top: -5px;
+	margin-left: -30px;
+}
+
+#conference-jumbotron < img {
+	width: 100%;
+	height: 100%;
+}
+
+.event-list {
+	text-align: center;
+}
+
+.event-image {
+	border-radius: 25px;
+	padding:1px;
+	border:1px solid black;
+}
+
+#conference-name {
+	text-align: center;
+	color: teal;
+	transform: translateY(-55%);
+}
+
+.jumbotron {
+	min-height: 450px;
+}
