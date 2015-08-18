@@ -1,0 +1,50 @@
+.navbar-thumb {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	position: absolute;
+	display: inline;
+	margin-top: -5px;
+	margin-left: -30px;
+}
+
+#conference-jumbotron < img {
+	width: 100%;
+	height: 100%;
+}
+
+.event-list {
+	text-align: center;
+}
+
+.event-image {
+	border-radius: 25px;
+	padding:1px;
+	border:1px solid black;
+}
+
+#conference-name {
+	text-align: center;
+	color: teal;
+	transform: translateY(-55%);
+}
+
+.jumbotron {
+	min-height: 450px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
