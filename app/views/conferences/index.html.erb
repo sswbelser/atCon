@@ -1,4 +1,24 @@
 <% @conferences.each do |c| %>
-	<p> <%= c.name %> </p>
-	<%= image_tag("dog.jpeg") %>
-	<% end %>
+<div class="container">
+	<div id="conference-jumbotron" class="jumbotron" style=" width: 100%; background-size: cover; background-image: url(<%= asset_path c.image %>)">
+		<div class="row">
+			<h1 id="conference-name"><%= c.name %></h1>
+		</div>
+	</div>
+	<!-- Placeholder events (will have < % c.events.each % >) -->
+	<div class="container event-list">
+		<div class="row">
+			<div class="col-sm-4">
+				<img src="http://hypefreshmag.com/wp-content/uploads/2015/06/beer-genes-app-will-help-people-pick-beers.jpg" height="200" width="200" class="event-image">
+			</div>
+			<div class="col-sm-4">
+				<img src="http://www.fodors.com/wire/theme-park-tips.jpg" height="200" width="200" class="event-image">
+			</div>
+			<div class="col-sm-4">
+				<img src="http://barfblog.com/wp-content/uploads/2012/06/gleneagles_bar3_large.jpg" height="200" width="200" class="event-image">
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>
+<% end %>
