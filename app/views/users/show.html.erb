@@ -1,13 +1,11 @@
-
-
-<div class="col-sm-6 col-sm-offset-3 well">
-<h2>Profile Page</h2>
-<img src="<%= @user.avatar %>">
-<p>
-  <ul>
-    <li>First:<%= @user.first_name %></li>
-    <li>Last:<%= @user.last_name %></li>    
-    <li>Email:<%= @user.email %></li>
-
-  </p>
+<div class="container">
+	<div class="col-sm-6 col-sm-offset-3 well">
+		<h2>Profile Page</h2>
+		<img src="<%= @user.avatar %>">
+		<ul>
+			<li>First:<%= @user.first_name %></li>
+			<li>Last:<%= @user.last_name %></li>    
+			<li>Email:<%= @user.email %></li>
+		</ul>
+	</div>
 </div>
