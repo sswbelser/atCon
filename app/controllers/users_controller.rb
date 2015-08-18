@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 
   # before_filter :authorize, only: [:show]
    # creates the singup form
+
+  def index
+    @users = User.all
+  end
+
   def new
     # redirect user if already logged in
     if current_user
