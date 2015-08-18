@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
 	resources :conferences, only: [:index, :show]
 
+	resources :events
+
 end

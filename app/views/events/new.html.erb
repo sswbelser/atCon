@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <hr>
+    <%= form_for @event, :html => { :multipart => true, :id => "new_event" } do |f| %>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <%= f.text_field :name, placeholder: "Name", autofocus: true, class: "form-control" %>
+    </div>
+     <div class="form-group">
+      <label for="address">Address</label>
+      <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <%= f.text_field :city, placeholder: "City", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <%= f.text_field :state, placeholder: "State", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="date_start">Start Date</label>
+      <%= date_field :date_start, placeholder: "Start Date", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="date_end">End Date</label>
+      <%= date_field :date_end, placeholder: "End Date", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="start_time">Start Time</label>
+      <%= time_field :start_time, placeholder: "Start Time" %>
+    </div>
+    <div class="form-group">
+      <label for="end_time">End Time</label>
+      <%= time_field :end_time, placeholder: "End Time" %>
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacity</label>
+      <%= number_field :capacity, placeholder: "Capacity", class: "form-control" %>
+    </div>  
+    <div class="form-group">
+      <label for="cost">Cost</label>
+      <%= number_field :cost, placeholder: "Cost", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="category">Categories</label>
+      <%= select_tag(:catorgory_id, options_for_select([["Food & Drink", 1],["Arts & Music",2], ["Family Friendly", 3],["Sports & Fitness", 4]]))%>
+    </div>
+    <%= f.submit "Create Event", class: "btn btn-primary btn-block" %>
+    <% end %>
+    <br>
+	</div>  
+</div>  
