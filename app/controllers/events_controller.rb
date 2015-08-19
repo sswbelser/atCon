@@ -8,4 +8,9 @@ class EventsController < ApplicationController
   def create
     
   end
+
+	def show
+		@event = Event.find(params[:name])
+		render :show
+	end
 end
