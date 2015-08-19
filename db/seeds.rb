@@ -5,6 +5,10 @@ conferences = Conference.create([
 	{name: "Comic Con San Diego", image: "comiccon.jpg", address: "4716 Palm Ave", city: "La Mesa", state: "California", start_date: "06/15/2016", end_date: "06/21/2016", start_time: "06:00", end_time: "20:00"}
 ])
 
-# categories = Category.create([
-#   {name: "Food & Drink"},
-#   {name: ""}])
+categories = Category.create([
+	{name: "Food & Drink", image: "fooddrink.png"},
+	{name: "Arts & Music", image: "artculture.png"},
+	{name: "Family Friendly", image: "family.png"},
+	{name: "Sports & Fitness", image: "fitness.jpg"},
+	{name: "Networking", image: "networking.png"}
+])

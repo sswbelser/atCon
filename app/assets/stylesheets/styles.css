@@ -32,3 +32,12 @@
 .jumbotron {
 	min-height: 450px;
 }
+
+.category-image {
+	height: 50px;
+	width: 50px;
+}
+
+.centered-headline {
+	text-align: center;
+}
