@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-sm-3">
+    <h1>Placeholder Text for other events</h1>
+  </div>
+  <div class="col-sm-6">
+    <div class="col-sm-12  well">
+      <h2>Event Page</h2>
+      <ul>
+      <% @events.each do |e| %>
+        <li>Name: <%= e.name %></li>
+        <li>Capacity: <%= e.capacity %></li>    
+        <li>Cost: <%= e.cost %></li>
+        <li>Event Category: <%= e.category %></li>
+        <%= link_to "Edit", edit_event_path(e) %>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <h1>Placeholder Text for other event attendees</h1>
+  </div>
+</div>
