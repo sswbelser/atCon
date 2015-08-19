@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818215703) do
+ActiveRecord::Schema.define(version: 20150819144845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "conferences", force: :cascade do |t|
     t.string   "name"
@@ -41,10 +47,12 @@ ActiveRecord::Schema.define(version: 20150818215703) do
     t.time     "end_time"
     t.integer  "capacity"
     t.integer  "cost"
-    t.integer  "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
+
+  add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -59,4 +67,5 @@ ActiveRecord::Schema.define(version: 20150818215703) do
     t.datetime "avatar_updated_at"
   end
 
+  add_foreign_key "events", "categories"
 end

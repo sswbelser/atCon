@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="col-sm-3">
+		<h1>Placeholder Text for other events</h1>
+	</div>
+	<div class="col-sm-6">
+		<div class="col-sm-12 well">
+			<h2>Event Page</h2>
+			<ul> 
+				<li>Name: <%= @event.name %></li>
+				<li>Capacity: <%= @event.capacity %></li>    
+				<li>Cost: <%= @event.cost %></li>
+				<li>Date: <%= localize(@event.start_date, :format => '%m/%d/%Y') %> to <%= localize(@event.end_date, :format => '%m/%d/%Y') %> </li>
+				<li>Start: <%= @event.start_time.strftime("%I:%M%p") %> End: <%= @event.end_time.strftime("%I:%M%p")%></li>
+				<li>Cost: <%= @event.cost %></li>
+				<li>Location: <%= @event.address%>, <%= @event.city%>, <%=@event.state  %></li>
+				<li>Event Category: <%= @event.category.name %></li>
+				<%= link_to "Show", event_path(@event), class: "btn" %>
+				<%= link_to "Edit", edit_event_path(@event), class: "btn" %>
+				<%= link_to "delete", event_path(@event),class: "btn", method: :delete %>
+			</ul>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<h1>Placeholder Text for other event attendees</h1>
+	</div>
+</div>
