@@ -1,11 +1,10 @@
 <div class="container">
   <div class="col-sm-3">
-    <h1>Placeholder Text for other events</h1>
+    <h1 class="centered-headline">Placeholder Text for other events</h1>
   </div>
   <div class="col-sm-6">
     <div class="col-sm-12">
-      <h2>Event Page</h2>
-    
+      <h1 class="centered-headline">Event Page</h1>
       <% @events.each do |e| %>
       <ul class="well">
       <li>Name: <%= e.name %></li>
@@ -14,17 +13,19 @@
       <li>Date: <%= localize(e.start_date, :format => '%m/%d/%Y') %> to  <%= localize(e.end_date, :format => '%m/%d/%Y') %> </li>
       <li>Start: <%= e.start_time.strftime("%I:%M%p") %></li>
       <li> End: <%= e.end_time.strftime("%I:%M%p")%></li>
-      <li>Cost: <%= e.cost %></li>
+      <li>Cost: $<%= e.cost %></li>
       <li>Location: <%= e.address%>, <%= e.city%>, <%=e.state  %></li>
-      <li>Event Category: <%= e.category.name %></li>
+      <li>Event Category: <%= e.category.name %> <%= image_tag(e.category.image, :class => "category-image") %></li>
       <%= link_to "Show", event_path(e), class: "btn" %>
       <%= link_to "Edit", edit_event_path(e), class: "btn" %>
-      <%= link_to "delete", event_path(e),class: "btn", method: :delete %>
+      <%= link_to "Delete", event_path(e), class: "btn", method: :delete %>
+      <%= link_to "New Post", posts_new_path(@event), class: "btn", method: :get %>
+
       </ul>
       <% end %>
     </div>
   </div>
   <div class="col-sm-3">
-    <h1>Placeholder Text for other event attendees</h1>
+    <h1 class="centered-headline">Placeholder Text for other event attendees</h1>
   </div>
 </div>

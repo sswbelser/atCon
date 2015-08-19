@@ -101,3 +101,12 @@ body > nav > div > div.navbar-header > a {
 	min-height: 450px;
 	background-color:rgba(252,177,65,0.2);
 }
+
+.category-image {
+	height: 50px;
+	width: 50px;
+}
+
+.centered-headline {
+	text-align: center;
+}
