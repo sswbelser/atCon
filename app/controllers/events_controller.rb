@@ -6,8 +6,13 @@ class EventsController < ApplicationController
   end
 
 	def new
-		@event = Event.new
-		render :new
+    if current_user
+		  @event = Event.new
+		  render :new
+    else
+      flash[:error] = "Need to login to create event."
+      redirect_to login_path
+    end
 	end
 	
 
@@ -15,7 +20,6 @@ class EventsController < ApplicationController
 	def create
 		# redirect user if already logged in
 		if current_user
-  
 			event = Event.new(event_params)
 			if event.save
 				flash[:notice] = "Successfully saved event."
@@ -25,7 +29,8 @@ class EventsController < ApplicationController
 				redirect_to event_path
 			end
 		else
-			redirect_to root_path
+      flash[:error] = "Need to login to create event."
+			redirect_to login_path
 		end
 	end
 
@@ -34,8 +39,8 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
       render :edit
     else
-      flash[:error] = event.errors.full_messages.join(', ')
-      redirect_to root_path
+      flash[:error] = flash[:error] = "Need to login to create event."
+      redirect_to login_path
     end
   end
 
@@ -47,20 +52,42 @@ class EventsController < ApplicationController
          redirect_to event_path(event)
          flash[:notice] = "Successfully updated event:#{event.name}!"
        else
-        flash[:error] = user.errors.full_messages.join(', ')
+        flash[:error] = event.errors.full_messages.join(', ')
         redirect_to edit_event_path  
        end
     else
-      flash[:error] = user.errors.full_messages.join(', ')
+      flash[:error] = flash[:error] = "Need to login to create event."
       redirect_to edit_event_path
     end
 
   end
 
 	def show
-		@event = Event.find(params[:id])
-		render :show
+    if Event.find_by_id(params[:id])
+		  @event = Event.find(params[:id])
+		  render :show
+    else
+      flash[:error] = "Could not find event #{params[:id]}"
+    redirect_to root_path
+   end
 	end
+
+  def destroy
+    if event = Event.find(params[:id])
+      if current_user
+        flash[:notice] = "Successfully deleted Event!"
+        event.delete
+        redirect_to events_path
+      else
+        flash[:error] = "You need to login in to delete event."
+        redirect_to login_path
+     end
+   else
+      flash[:error] = event.errors.full_messages.join(', ')
+      redirect_to events_path
+   end
+       
+  end
 
 	private
 		def event_params
