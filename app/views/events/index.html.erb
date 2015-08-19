@@ -3,15 +3,23 @@
     <h1>Placeholder Text for other events</h1>
   </div>
   <div class="col-sm-6">
-    <div class="col-sm-12  well">
+    <div class="col-sm-12">
       <h2>Event Page</h2>
-      <ul>
+    
       <% @events.each do |e| %>
-        <li>Name: <%= e.name %></li>
-        <li>Capacity: <%= e.capacity %></li>    
-        <li>Cost: <%= e.cost %></li>
-        <li>Event Category: <%= e.category %></li>
-        <%= link_to "Edit", edit_event_path(e) %>
+      <ul class="well">
+      <li>Name: <%= e.name %></li>
+      <li>Capacity: <%= e.capacity %></li>    
+      <li>Cost: <%= e.cost %></li>
+      <li>Date: <%= localize(e.start_date, :format => '%m/%d/%Y') %> to  <%= localize(e.end_date, :format => '%m/%d/%Y') %> </li>
+      <li>Start: <%= e.start_time.strftime("%I:%M%p") %></li>
+      <li> End: <%= e.end_time.strftime("%I:%M%p")%></li>
+      <li>Cost: <%= e.cost %></li>
+      <li>Location: <%= e.address%>, <%= e.city%>, <%=e.state  %></li>
+      <li>Event Category: <%= e.category.name %></li>
+      <%= link_to "Show", event_path(e), class: "btn" %>
+      <%= link_to "Edit", edit_event_path(e), class: "btn" %>
+      <%= link_to "delete", event_path(e),class: "btn", method: :delete %>
       </ul>
       <% end %>
     </div>
