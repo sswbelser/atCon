@@ -20,31 +20,31 @@
     </div>
     <div class="form-group">
       <label for="date_start">Start Date</label>
-      <%= date_field :date_start, placeholder: "Start Date", class: "form-control" %>
+      <%= f.date_field :date_start, placeholder: "Start Date", class: "form-control" %>
     </div>
     <div class="form-group">
       <label for="date_end">End Date</label>
-      <%= date_field :date_end, placeholder: "End Date", class: "form-control" %>
+      <%= f.date_field :date_end, placeholder: "End Date", class: "form-control" %>
     </div>
     <div class="form-group">
       <label for="start_time">Start Time</label>
-      <%= time_field :start_time, placeholder: "Start Time" %>
+      <%= f.time_field :start_time, placeholder: "Start Time" %>
     </div>
     <div class="form-group">
       <label for="end_time">End Time</label>
-      <%= time_field :end_time, placeholder: "End Time" %>
+      <%= f.time_field :end_time, placeholder: "End Time" %>
     </div>
     <div class="form-group">
       <label for="capacity">Capacity</label>
-      <%= number_field :capacity, placeholder: "Capacity", class: "form-control" %>
+      <%= f.number_field :capacity, placeholder: "Capacity", class: "form-control" %>
     </div>  
     <div class="form-group">
       <label for="cost">Cost</label>
-      <%= number_field :cost, placeholder: "Cost", class: "form-control" %>
+      <%= f.number_field :cost, placeholder: "Cost", class: "form-control" %>
     </div>
     <div class="form-group">
       <label for="category">Categories</label>
-      <%= select_tag(:catorgory_id, options_for_select([["Food & Drink", 1],["Arts & Music",2], ["Family Friendly", 3],["Sports & Fitness", 4]]))%>
+      <%= f.select_tag(:catorgory_id, options_for_select([["Food & Drink", 1],["Arts & Music",2], ["Family Friendly", 3],["Sports & Fitness", 4]]))%>
     </div>
     <%= f.submit "Create Event", class: "btn btn-primary btn-block" %>
     <% end %>
