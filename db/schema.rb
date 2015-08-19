@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819171616) do
+ActiveRecord::Schema.define(version: 20150819191248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,21 @@ ActiveRecord::Schema.define(version: 20150819171616) do
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
 
+  create_table "posts", force: :cascade do |t|
+    t.text     "body"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "posts", ["event_id"], name: "index_posts_on_event_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -69,4 +84,6 @@ ActiveRecord::Schema.define(version: 20150819171616) do
   end
 
   add_foreign_key "events", "categories"
+  add_foreign_key "posts", "events"
+  add_foreign_key "posts", "users"
 end
