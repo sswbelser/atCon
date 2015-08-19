@@ -95,10 +95,3 @@ class EventsController < ApplicationController
 		end
 
 end
-
-      # some_params = {name: event_params[:name], address: event_params[:address],city: event_params[:city],
-      # state: event_params[:state], start_date: event_params[:start_date], end_date: event_params[:end_date],
-      # start_time: event_params[:start_time], end_time: event_params[:end_time],
-      # capacity: event_params[:capacity], cost: event_params[:cost], category: event_params[:category].to_i}
-
-
