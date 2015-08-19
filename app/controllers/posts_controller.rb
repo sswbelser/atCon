@@ -5,7 +5,7 @@ class PostsController < ApplicationController
       @post = Post.new
       render :new
     else
-      flash[:error] = "Need to login to post event."
+      flash[:error] = "Need to login to post post."
       redirect_to login_path
     end
   end
@@ -34,12 +34,46 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if current_user 
+      @post = Post.find(params[:id])
+      render :edit
+    else
+      flash[:error] = "Need to login to create post."
+      redirect_to login_path
+    end
   end
 
   def update
+    post = Post.find(params[:id])
+    if current_user
+       if post.update_attributes(post_params)
+         redirect_to event_path(post.event_id)
+         flash[:notice] = "Successfully updated post:#{post.body}!"
+       else
+        flash[:error] = post.errors.full_messages.join(', ')
+        redirect_to edit_post_path  
+       end
+    else
+      flash[:error] = flash[:error] = "Need to login to create post."
+      redirect_to edit_post_path
+    end
+
   end
 
   def destroy
+    if post = Post.find(params[:id])
+      if current_user
+        flash[:notice] = "Successfully deleted post!"
+        post.delete
+        redirect_to events_path
+      else
+        flash[:error] = "You need to login in to delete post."
+        redirect_to login_path
+     end
+   else
+      flash[:error] = post.errors.full_messages.join(', ')
+      redirect_to events_path
+   end
   end
 
 
