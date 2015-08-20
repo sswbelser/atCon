@@ -12,3 +12,6 @@ categories = Category.create([
 	{name: "Sports & Fitness", image: "fitness.jpg"},
 	{name: "Networking", image: "networking.png"}
 ])
+
+events = Event.create([
+  ])
