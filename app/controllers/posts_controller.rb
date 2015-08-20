@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def edit
     if current_user 
-      @post = Post.find(params[:id])
+      @post = Post.find(post_params[:id])
       render :edit
     else
       flash[:error] = "Need to login to create post."
@@ -81,6 +81,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:body, :image, :user_id, :event_id)
+      params.require(:post).permit(:body, :image, :user_id, :event_id, :post_id)
     end
 end
