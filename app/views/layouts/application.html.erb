@@ -24,10 +24,19 @@
 				<a class="navbar-brand" href="/">atCon</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-right">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/events">My Events</a></li>
+							<li><a href="/events/new">Create an Event</a></li>
+						</ul>
+					</li>
+				</ul>
 			<% if logged_in? %>
 				<a class="btn navbar-btn navbar-right btn-warning" href="/logout">Log out</a>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="navbar-header" href="/profile"><%= image_tag current_user.avatar.url(:thumb), class: "navbar-thumb" %>&nbsp&nbsp<%= current_user.first_name %></a></li>
+					<li><a class="navbar-header" href="/profile"><%= image_tag current_user.avatar.url(:thumb), class: "navbar-thumb" %>&nbsp;&nbsp;<%= current_user.first_name %></a></li>
 				</ul>
 			<% else %>
 				<a class="btn navbar-btn navbar-right btn-default" href="/login">Login</a>

@@ -1,8 +1,13 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
-    render :index
+    if current_user
+      @events = Event.all
+      render :index
+    else
+      flash[:error] = "Need to login to view your events."
+      redirect_to login_path
+    end
   end
 
 	def new
