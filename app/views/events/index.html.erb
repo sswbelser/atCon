@@ -1,4 +1,3 @@
-<div class="container">
   <div class="col-sm-6 col-sm-offset-3">
     <h1 class="centered-headline">Event Page</h1>
     <% @events.each do |e| %>
@@ -7,29 +6,28 @@
       <div class="row">
         <div class="col-sm-8">
           <ul>
-            <li>Conference: <%= e.conference.name %></li>
-            <li>Name: <%= e.name %></li>
-            <li>Cost: $<%= e.cost %></li>
-            <li>Capacity: <%= e.capacity %></li>    
+            <li><%= e.name %></li>
+            <li>$<%= e.cost %></li>
+            <li><%= e.capacity %> people capacity</li>    
             <li><%= localize(e.start_date, :format => '%m/%d/%Y') %> - <%= localize(e.end_date, :format => '%m/%d/%Y') %></li>
             <li><%= e.start_time.strftime("%I:%M%p") %> - <%= e.end_time.strftime("%I:%M%p") %></li>
             <li><a href="http://maps.google.com/?q=<%= e.address %> <%= e.city%> <%=e.state %>"><%= e.address %>, <%= e.city%>, <%=e.state %></a></li>
-            <%= link_to "View Event", event_path(e), class: "btn" %>
-            <%= link_to "Edit", edit_event_path(e), class: "btn" %>
-            <%= link_to "Delete", event_path(e), class: "btn", method: :delete %>
-        </ul>
+            <li>Conference: <%= e.conference.name %></li>
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <p><%= e.category.name %></p>
+          <%= image_tag(e.category.image, class: "category-image") %>
+        </div>
       </div>
-      <div class="col-sm-4">
-        <p><%= e.category.name %></p>
-        <%= image_tag(e.category.image, class: "category-image") %>
+      <div class="row">
+        <div style="text-align: center">
+          <%= link_to "View Event", event_path(e), class: "btn" %>
+          <%= link_to "Edit", edit_event_path(e), class: "btn" %>
+          <%= link_to "Delete", event_path(e), class: "btn", method: :delete %>
+        </div>
       </div>
     </div>
-  </div>
-  <% else %>
-  <div class="well">
-    <h2>You are not current going to any events</h2>
-  </div>
   <% end %>
   <% end %>
   </div>
-</div>
