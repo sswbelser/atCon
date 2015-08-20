@@ -76,8 +76,11 @@
 	</div>
 	<div class="col-sm-3">
 		<h1 class="centered">Placeholder Text for other event attendees</h1>
-		<p><%= link_to "Going", edit_event_path %>
-
+		<!--<p><%= link_to "Going", edit_event_path %>-->
+		<p><%= form_for :rsvp, url: rsvp_index_path, html:{method: :post} do |f| %>
+				Going<%= radio_button_tag  "going", "yes", true %>
+				Not Going<%= radio_button_tag  "not going", "no" %>
+				<% end%>
 		</p>
 
 
