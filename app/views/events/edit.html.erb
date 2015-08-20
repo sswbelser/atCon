@@ -44,7 +44,11 @@
     </div>
     <div class="form-group">
       <label for="category_id">Categories</label>
-      <%= f.select(:category_id, options_for_select([["Food & Drink", 1],["Arts & Music",2], ["Family Friendly", 3],["Sports & Fitness", 4]]))%>
+      <%= f.select(:category_id, options_for_select([["Food & Drink", 1], ["Arts & Music",2], ["Family Friendly", 3], ["Sports & Fitness", 4], ["Networking",5]]))%>
+    </div>
+    <div class="form-group">
+      <label for="conference_id">Conferences</label>
+      <%= f.select(:conference_id, options_for_select([["I Love Dogs", 1], ["Mastercard Hackathon",2], ["Google Chrome Dev Summit", 3], ["Comic Con San Diego", 4]])) %>
     </div>
     <%= f.submit "Update Event", class: "btn btn-primary btn-block" %>
     <% end %>

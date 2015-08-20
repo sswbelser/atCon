@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 		if current_user
 			event = Event.new(event_params)
       event.user_id = current_user.id
-      event.conference_id = 1
+      # event.conference_id = 1
 
 			if event.save
 				flash[:notice] = "Successfully saved event."
@@ -98,7 +98,7 @@ class EventsController < ApplicationController
 
 	private
 		def event_params
-			params.require(:event).permit(:name, :address, :city, :state, :start_date, :end_date, :start_time, :end_time, :capacity, :cost, :category_id)
+			params.require(:event).permit(:name, :address, :city, :state, :start_date, :end_date, :start_time, :end_time, :capacity, :cost, :category_id, :conference_id)
 		end
 
 end
