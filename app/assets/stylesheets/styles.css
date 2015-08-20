@@ -42,7 +42,6 @@ body {
 	padding-left: 0px;
 	padding-right: 0px;
 	padding-bottom: 0px;
-	
 }
 
 .event-list {
@@ -85,7 +84,6 @@ body > nav > div > div.navbar-header > a {
 	font-size: 28px;
 	padding-left: 50px;
 }
-
 
 #conference-name {
 	text-align: center;
