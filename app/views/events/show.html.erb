@@ -3,59 +3,70 @@
 		<h1 class="centered-headline">Placeholder Text for other events</h1>
 	</div>
 	<div class="col-sm-6">
-		<div class="col-sm-12">
-			<h1 class="centered-headline">Event Page</h1>
-			<ul class="well"> 
-				<li>Name: <%= @event.name %></li>
-				<li>Capacity: <%= @event.capacity %></li>    
-				<li>Cost: <%= @event.cost %></li>
-				<li>Date: <%= localize(@event.start_date, :format => '%m/%d/%Y') %> to <%= localize(@event.end_date, :format => '%m/%d/%Y') %> </li>
-				<li>Start: <%= @event.start_time.strftime("%I:%M%p") %> End: <%= @event.end_time.strftime("%I:%M%p")%></li>
-				<li>Cost: <%= @event.cost %></li>
-				<li>Location: <%= @event.address%>, <%= @event.city%>, <%=@event.state  %></li>
-				<li>Event Category: <%= @event.category.name %> <%= image_tag(@event.category.image, :class => "category-image") %></li>
-				<%= link_to "Show", event_path(@event), class: "btn" %>
+		<h1 class="centered-headline">Event Page</h1>
+		<div class="well">
+			<div class="col-sm-8">
+				<ul> 
+					<li>Name: <%= @event.name %></li>
+					<li>Cost: $<%= @event.cost %></li>
+					<li>Capacity: <%= @event.capacity %> people</li>
+					<li><%= localize(@event.start_date, :format => '%m/%d/%Y') %> - <%= localize(@event.end_date, :format => '%m/%d/%Y') %></li>
+					<li><%= @event.start_time.strftime("%I:%M%p") %> - <%= @event.end_time.strftime("%I:%M%p") %></li>
+					<li>Location: <%= @event.address %>, <%= @event.city%>, <%=@event.state %></li>
+					<li>Event Category: <%= @event.category.name %></li>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<%= image_tag(@event.category.image, :class => "category-image") %>
+			</div>
+			<div class="row">
 				<%= link_to "Edit", edit_event_path(@event), class: "btn" %>
 				<%= link_to "Delete", event_path(@event),class: "btn", method: :delete %>
-			</ul>
-			<!-- new post -->
-			<%= form_for :post, url: posts_path, html:{id:"new-post", method: :post} do |f| %>
-			<div class="form-group">
-				<%= f.hidden_field :event_id,  value: @event.id  %>
-			  <label for="body">New Post</label>
-			  <%= f.text_area :body, placeholder: "Enter post here", autofocus: true, class: "form-control" %>
 			</div>
-			<div class="form-group">
-			  <label for="image">Image</label>
-			  <%= f.file_field :image %>
-			  <p class="help-block">Image is optional</p>
-			</div>
-			<%= f.submit "Post", class: "btn btn-primary btn-block" %>
-			<% end %>
-			<!-- post -->
-			<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>
-				<%= f.hidden_field :event_id,  value: @event.id  %>
-			<div class="form-group">
-			  <label for="body">Edit Post</label>
-			  <%= f.text_area :body, placeholder: "Edit post here", autofocus: true, class: "form-control" %>
-			</div>
-			<div class="form-group">
-			  <label for="image">Image</label>
-			  <%= f.file_field :image %>
-			  <p class="help-block">Image is optional</p>
-			</div>
-			<%= f.submit "Post", class: "btn btn-primary btn-block" %>
-			<% end %>
-			<hr>
-			<% @event.posts.each do |post| %>
-			<div><%= image_tag post.image.url(:thumb), width:"30"%><p><%= post.body %></p></div>
-			<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_post_path(post), class: "btn edit-btn"%>
-			<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, post_path(post), class: "btn",
-			                  method: :delete,
-			                  data: { confirm: 'Are you sure?' } %>
-			<% end %>
-
 		</div>
+		<!-- new post -->
+		<%= form_for :post, url: posts_path, html:{id:"new-post", method: :post} do |f| %>
+		<%= f.hidden_field :event_id,  value: @event.id %>
+		<div class="form-group">
+			<label for="body">New Post</label>
+			<%= f.text_area :body, placeholder: "Enter post here", autofocus: true, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<label for="image">Image</label>
+			<%= f.file_field :image %>
+			<p class="help-block">Image is optional</p>
+		</div>
+		<%= f.submit "Add Post", class: "btn btn-primary btn-block" %>
+		<% end %>
+		<hr>
+		<% @event.posts.each do |post| %>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<!-- TODO: Placeholder for event.post.user.avatar and event.post.user.name -->
+			</div>
+			<div class="panel-body">
+				<%= image_tag post.image.url(:thumb), width:"50"%><p><%= post.body %></p>
+				<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_post_path(post), class: "btn edit-btn" %>
+				<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, post_path(post), class: "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+				<div>
+					<!-- edit post -->
+					<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>
+					<%= f.hidden_field :event_id, value: @event.id %>
+					<div class="form-group">
+						<label for="body">Edit Post</label>
+						<%= f.text_area :body, placeholder: "Edit post here", autofocus: true, class: "form-control" %>
+					</div>
+					<div class="form-group">
+						<label for="image">Image</label>
+						<%= f.file_field :image %>
+						<p class="help-block">Image is optional</p>
+					</div>
+					<%= f.submit "Edit Post", class: "btn btn-primary btn-block" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<% end %>
 	</div>
 	<div class="col-sm-3">
 		<h1 class="centered-headline">Placeholder Text for other event attendees</h1>

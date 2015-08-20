@@ -5,8 +5,8 @@ $(function(){
 
     var $body = $(this).prev().find("p").text();
 
-    $("#new-post").addClass("hide");
-    $("#edit-post").removeClass("hide");
+    $("#new-post").toggleClass("hide");
+    $("#edit-post").toggleClass("hide");
     $("textarea").text($body);
     getNum($(this));
 
