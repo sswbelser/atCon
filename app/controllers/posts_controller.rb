@@ -16,7 +16,8 @@ class PostsController < ApplicationController
     if current_user
       post = Post.new(post_params)
       post.user_id = current_user.id
-      post.event_id = Event.find(post.user_id).id
+      puts "this is post event id == #{post.event_id}"
+
       puts "this is post image == #{post.image}"
       puts "this is post image.url == #{post.image.url}"
 
@@ -64,8 +65,9 @@ class PostsController < ApplicationController
     if post = Post.find(params[:id])
       if current_user
         flash[:notice] = "Successfully deleted post!"
+        event_id=post.event_id
         post.delete
-        redirect_to events_path
+        redirect_to event_path(event_id)
       else
         flash[:error] = "You need to login in to delete post."
         redirect_to login_path
