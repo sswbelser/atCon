@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 		# redirect user if already logged in
 		if current_user
 			event = Event.new(event_params)
+      event.user_id = current_user.id
       event.conference_id = 1
 
 			if event.save
