@@ -7,7 +7,7 @@ body {
     color: #2396C8;
 }
 
-#navbar-right > a.btn.navbar-btn.navbar-right.btn-primary {
+.navbar-tweaks > a.btn.navbar-btn.navbar-right.btn-primary {
 	background-image: linear-gradient(to bottom,#DC4405 0,#B33703 100%);
     background-repeat: repeat-x;
     border-color: #DC4405;
@@ -27,10 +27,16 @@ body {
 .post-thumb {
 	height: 30px;
 	width: 30px;
-	position: absolute;
 	display: inline;
-	margin-top: -5px;
-	margin-left: 375px;
+}
+
+.panel-heading ul {
+    list-style-type: none;
+    text-align: right;
+}
+
+.panel-heading ul li {
+    display: inline;
 }
 
 #conference-jumbotron < img {

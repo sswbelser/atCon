@@ -29,4 +29,6 @@ Rails.application.routes.draw do
 	end
 
 
+	resources :rsvp , only: [:create]
 end
+
