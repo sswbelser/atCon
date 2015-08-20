@@ -17,9 +17,20 @@
 				<%= link_to "Show", event_path(@event), class: "btn" %>
 				<%= link_to "Edit", edit_event_path(@event), class: "btn" %>
 				<%= link_to "Delete", event_path(@event),class: "btn", method: :delete %>
-				<%= link_to "New Post", posts_new_path(@event), class: "btn", method: :get %>
 			</ul>
-			<h3>Posts</h3>
+			<%= form_for :post, url: posts_path, html:{method: :post} do |f| %>
+			<div class="form-group">
+				<%= f.hidden_field :event_id,  value: @event.id  %>
+			  <label for="body">Post</label>
+			  <%= f.text_area :body, placeholder: "Enter post.", autofocus: true, class: "form-control" %>
+			</div>
+			<div class="form-group">
+			  <label for="image">Image</label>
+			  <%= f.file_field :image %>
+			  <p class="help-block">Image is optional</p>
+			</div>
+			<%= f.submit "Post", class: "btn btn-primary btn-block" %>
+			<% end %>
 			<hr>
 			<% @event.posts.each do |post| %>
 			<div><%= image_tag post.image.url(:thumb), width:"30"%><p><%= post.body %></p></div>

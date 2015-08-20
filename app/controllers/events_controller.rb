@@ -86,7 +86,6 @@ class EventsController < ApplicationController
       flash[:error] = event.errors.full_messages.join(', ')
       redirect_to events_path
    end
-       
   end
 
 	private
