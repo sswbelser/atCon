@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819191248) do
+ActiveRecord::Schema.define(version: 20150820032635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,16 @@ ActiveRecord::Schema.define(version: 20150819191248) do
     t.time     "end_time"
     t.integer  "capacity"
     t.integer  "cost"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "category_id"
+    t.integer  "conference_id"
+    t.integer  "user_id"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
+  add_index "events", ["conference_id"], name: "index_events_on_conference_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"
@@ -84,6 +88,8 @@ ActiveRecord::Schema.define(version: 20150819191248) do
   end
 
   add_foreign_key "events", "categories"
+  add_foreign_key "events", "conferences"
+  add_foreign_key "events", "users"
   add_foreign_key "posts", "events"
   add_foreign_key "posts", "users"
 end
