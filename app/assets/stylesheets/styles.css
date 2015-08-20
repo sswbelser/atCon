@@ -41,3 +41,31 @@
 .centered-headline {
 	text-align: center;
 }
+
+#new_user .error {
+	color: red;
+}
+
+#edit_user .error {
+	color: red;
+}
+
+#login_form .error {
+	color: red;
+}
+
+#new_event .error {
+	color: red;
+}
+
+#edit_event .error {
+	color: red;
+}
+
+#new_post .error {
+	color: red;
+}
+
+#edit_post .error {
+	color: red;
+}

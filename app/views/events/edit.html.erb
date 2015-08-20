@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
     <hr>
-    <%= form_for @event, :html => { :multipart => true, :id => "new_event" } do |f| %>
+    <%= form_for @event, :html => { :multipart => true, :id => "edit_event" } do |f| %>
     <div class="form-group">
       <label for="name">Name</label>
       <%= f.text_field :name, placeholder: "Name", autofocus: true, class: "form-control" %>
