@@ -70,6 +70,33 @@
 					<%= f.submit "Edit Post", class: "btn btn-primary btn-block" %>
 					<% end %>
 				</div>
+			<!-- comment -->
+			<h2>Comments</h2>
+			<% post.comments.each do |comment| %>
+			  <p>
+			    <strong>Comment:</strong>
+			    <%= comment.body %>
+			    By: <%= comment.user.first_name.titleize %>
+			    <% if comment.user == current_user %>	
+	        	<%= link_to '', [comment.post, comment],
+	              method: :delete,
+	              data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+	    	<% end %>
+			  </p>
+			<% end %>
+			 
+			<h2>Add a comment:</h2>
+			<%= form_for([post, post.comments.build]) do |f| %>
+			  <p>
+			    <%= f.label :body %><br>
+			    <%= f.text_area :body %>
+			  </p>
+			  <p>
+			    <%= f.submit %>
+			  </p>
+			<% end %>
+
+<!-- comment end -->
 			</div>
 		</div>
 		<% end %>

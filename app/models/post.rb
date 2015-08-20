@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
+  has_many :comments, dependent: :destroy
   
  has_attached_file :image,
                  :styles => { :medium => "150x150>", :thumb => "44x44#" },
