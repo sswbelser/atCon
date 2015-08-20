@@ -24,8 +24,6 @@ body {
 	background-color:rgba(252,177,65,0.2);
 }
 
-
-
 #conference-jumbotron < img {
 	width: 100%;
 	height: 100%;
@@ -38,7 +36,6 @@ body {
 	margin-top: 303px;
 	position: static;
 }
-
 
 #conference-jumbotron {
 	border-radius: 0;
@@ -55,6 +52,8 @@ body {
 	padding:0px;
 	margin-top:-31px; 
 	width: 100%;
+	padding:1px;
+	border:1px solid black;
 }
 
 body > div > div.event-list > div > div:nth-child(1) {
@@ -86,7 +85,6 @@ body > nav > div > div.navbar-header > a {
 	padding-left: 50px;
 }
 
-
 #conference-name {
 	text-align: center;
 	color: #fff;
@@ -103,11 +101,11 @@ body > nav > div > div.navbar-header > a {
 }
 
 .category-image {
-	height: 50px;
-	width: 50px;
+	height: 100px;
+	width: 100px;
 }
 
-.centered-headline {
+.centered {
 	text-align: center;
 }
 
@@ -131,10 +129,10 @@ body > nav > div > div.navbar-header > a {
 	color: red;
 }
 
-#new_post .error {
+#new-post .error {
 	color: red;
 }
 
-#edit_post .error {
+#edit-post .error {
 	color: red;
 }

@@ -16,10 +16,6 @@ class PostsController < ApplicationController
     if current_user
       post = Post.new(post_params)
       post.user_id = current_user.id
-      puts "this is post event id == #{post.event_id}"
-
-      puts "this is post image == #{post.image}"
-      puts "this is post image.url == #{post.image.url}"
 
       if post.save
         flash[:notice] = "Successfully saved post."
@@ -36,7 +32,7 @@ class PostsController < ApplicationController
 
   def edit
     if current_user 
-      @post = Post.find(params[:id])
+      @post = Post.find(post_params[:id])
       render :edit
     else
       flash[:error] = "Need to login to create post."
@@ -49,7 +45,7 @@ class PostsController < ApplicationController
     if current_user
        if post.update_attributes(post_params)
          redirect_to event_path(post.event_id)
-         flash[:notice] = "Successfully updated post:#{post.body}!"
+         flash[:notice] = "Successfully updated this post!"
        else
         flash[:error] = post.errors.full_messages.join(', ')
         redirect_to edit_post_path  
@@ -81,6 +77,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:body, :image, :user_id, :event_id)
+      params.require(:post).permit(:body, :image, :user_id, :event_id, :post_id)
     end
 end

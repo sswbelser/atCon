@@ -256,7 +256,7 @@ $(function() {
 		}
 	});
 
-	$("#new_post").validate({
+	$("#new-post").validate({
 		rules: {
 			"post[body]": {
 				required: true,
@@ -273,7 +273,7 @@ $(function() {
 		}
 	});
 
-	$("#edit_post").validate({
+	$("#edit-post").validate({
 		rules: {
 			"post[body]": {
 				required: true,
