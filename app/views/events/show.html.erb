@@ -45,12 +45,12 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<!-- TODO: Placeholder for event.post.user.avatar and event.post.user.name -->
+			  <%= post.user.full_name %>
 			</div>
 			<div class="panel-body">
 				<%= image_tag post.image.url(:thumb), width:"50"%><p><%= post.body %></p>
 				<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_post_path(post), class: "btn edit-btn" %>
 				<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, post_path(post), class: "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
-				<%= post.user.full_name %>
 				<div>
 					<!-- edit post -->
 					<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>

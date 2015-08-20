@@ -16,10 +16,6 @@ class PostsController < ApplicationController
     if current_user
       post = Post.new(post_params)
       post.user_id = current_user.id
-      puts "this is post event id == #{post.event_id}"
-
-      puts "this is post image == #{post.image}"
-      puts "this is post image.url == #{post.image.url}"
 
       if post.save
         flash[:notice] = "Successfully saved post."
