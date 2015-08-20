@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <hr>
+    <%= form_for @event, :html => { :multipart => true, :id => "new_event" } do |f| %>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <%= f.text_field :name, placeholder: "Name", autofocus: true, class: "form-control" %>
+    </div>
+     <div class="form-group">
+      <label for="address">Address</label>
+      <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <%= f.text_field :city, placeholder: "City", value: "San Francisco", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <%= f.text_field :state, placeholder: "State", value: "CA", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="start_date">Start Date</label>
+      <%= f.date_field :start_date, placeholder: "Start Date", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="end_date">End Date</label>
+      <%= f.date_field :end_date, placeholder: "End Date", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="start_time">Start Time</label>
+      <%= f.time_field :start_time, placeholder: "Start Time" %>
+    </div>
+    <div class="form-group">
+      <label for="end_time">End Time</label>
+      <%= f.time_field :end_time, placeholder: "End Time" %>
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacity</label>
+      <%= f.number_field :capacity, placeholder: "Capacity", class: "form-control" %>
+    </div>  
+    <div class="form-group">
+      <label for="cost">Cost</label>
+      <%= f.number_field :cost, placeholder: "Cost", value: 0, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="category_id">Categories</label>
+      <%= f.select(:category_id, options_for_select([["Food & Drink",1],["Arts & Music",2],["Family Friendly",3],["Sports & Fitness",4],["Networking",5]]))%>
+    </div>
+    <div class="form-group">
+      <label for="conference_id">Conferences</label>
+      <%= f.select(:conference_id, options_for_select([["I Love Dogs", 1], ["Mastercard Hackathon",2], ["Google Chrome Dev Summit", 3], ["Comic Con San Diego", 4]])) %>
+    </div>
+    <%= f.submit "Create Event", class: "btn btn-primary btn-block" %>
+    <% end %>
+    <br>
+	</div>  
+</div>  

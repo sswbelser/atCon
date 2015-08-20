@@ -1,17 +1,11 @@
 <div class="container">
-	<div class="col-sm-6 col-sm-offset-3 well">
-		<h2>Profile Page</h2>
+	<div class="col-sm-6 col-sm-offset-3 well centered">
+		<h2><%= @user.first_name %> <%= @user.last_name %></h2>
 		<img src="<%= @user.avatar %>">
-		<ul>
-			<li>First:<%= @user.first_name %></li>
-			<li>Last:<%= @user.last_name %></li>    
-			<li>Email:<%= @user.email %></li>
-		</ul>
-
-    <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_profile_path(@user) %>
-    <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, user_path(@user),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' } %>
-
+		<p><%= @user.email %></p>
+		<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_profile_path(@user) %>
+		<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
 	</div>
+	<div class="col-sm-3"><h2 class="centered">Your Events</h3>
+	</div>  
 </div>
