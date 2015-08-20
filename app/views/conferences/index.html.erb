@@ -1,29 +1,59 @@
-<% @conferences.each do |c| %>
-<div class="container">
-	<div id="conference-jumbotron" class="jumbotron" style=" width: 100%; background-size: cover; background-image: url(<%= asset_path c.image %>);">
-		<div id="jumbotron-footer" class="row">
-			<h1 id="conference-name" class="row	"><%= c.name %>
-			</h1>
-			<h4 class="text-center"><%= c.start_date %> - <%= c.end_date %></h4>
-		</div>
-	</div>
-	<!-- Placeholder events (will have < % c.events.each % >) -->
-	<div class="event-list">
-		<div class="row">
-			<div class="col-sm-3 text-left">
-				<img src="http://hypefreshmag.com/wp-content/uploads/2015/06/beer-genes-app-will-help-people-pick-beers.jpg" height="245" width="245" class="event-image">
-			</div>
-			<div class="col-sm-3 text-left">
-				<img src="http://www.fodors.com/wire/theme-park-tips.jpg" height="245" width="245" class="event-image">
-			</div>
-			<div class="col-sm-3 text-left">
-				<img src="http://barfblog.com/wp-content/uploads/2012/06/gleneagles_bar3_large.jpg" height="245" width="245" class="event-image">
-			</div>
-			<div class="col-sm-3 text-left">
-				<img src="http://barfblog.com/wp-content/uploads/2012/06/gleneagles_bar3_large.jpg" height="245" width="245" class="event-image">
-			</div>
-		</div>
-	</div>
-	<hr>
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+              <p>Conferences</p>
+            </li>
+            <% @conferences.each do |c| %>
+            <li>
+              <a href="#<%= c.name %>"><%= c.name %></a>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <% @conferences.each do |c| %>
+                    <div id="<%= c.name %>" class="container">
+                        <div id="conference-jumbotron" class="jumbotron" style=" width: 100%; background-size: cover; background-image: url(<%= asset_path c.image %>);">
+                         <div id="jumbotron-footer" class="row">
+                          <h1 id="conference-name" class="row   "><%= c.name %>
+                          </h1>
+                          <h4 class="text-center"><%= c.start_date %> - <%= c.end_date %></h4>
+                      </div>
+                  </div>
+                  <!-- Placeholder events (will have < % c.events.each % >) -->
+                  <div class="event-list">
+                     <div class="row">
+                      <div class="col-sm-3 text-left">
+                       <img src="http://hypefreshmag.com/wp-content/uploads/2015/06/beer-genes-app-will-help-people-pick-beers.jpg" height="245" width="245" class="event-image">
+                   </div>
+                   <div class="col-sm-3 text-left">
+                       <img src="http://www.fodors.com/wire/theme-park-tips.jpg" height="245" width="245" class="event-image">
+                   </div>
+                   <div class="col-sm-3 text-left">
+                       <img src="http://barfblog.com/wp-content/uploads/2012/06/gleneagles_bar3_large.jpg" height="245" width="245" class="event-image">
+                   </div>
+                   <div class="col-sm-3 text-left">
+                       <img src="http://barfblog.com/wp-content/uploads/2012/06/gleneagles_bar3_large.jpg" height="245" width="245" class="event-image">
+                   </div>
+               </div>
+           </div>
+           <hr>
+       </div>
+       <%end%>
+       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+   </div>
 </div>
-<%end%>
+</div>
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
