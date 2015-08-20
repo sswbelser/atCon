@@ -24,8 +24,6 @@ body {
 	background-color:rgba(252,177,65,0.2);
 }
 
-
-
 #conference-jumbotron < img {
 	width: 100%;
 	height: 100%;
@@ -109,7 +107,7 @@ body > nav > div > div.navbar-header > a {
 	width: 100px;
 }
 
-.centered-headline {
+.centered {
 	text-align: center;
 }
 
