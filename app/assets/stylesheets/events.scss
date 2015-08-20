@@ -1,3 +1,27 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.no-list{
+
+}
+
+.btn-color{
+  background-color: #66FFFF;
+  border: 1px solid #0080FF;
+}
+
+.going{
+  background-color: #66FF66;
+  border: 1px solid #0080FF;
+}
+
+ul{
+  list-style-type: none;
+  margin-top: 10px;
+}
+ul li{
+  padding: 5px;
+}

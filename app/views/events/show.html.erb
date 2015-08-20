@@ -75,13 +75,36 @@
 		<% end %>
 	</div>
 	<div class="col-sm-3">
-		<h1 class="centered">Placeholder Text for other event attendees</h1>
-		<!--<p><%= link_to "Going", edit_event_path %>-->
-		<p><%= form_for :rsvp, url: rsvp_index_path, html:{method: :post} do |f| %>
-				Going<%= radio_button_tag  "going", "yes", true %>
-				Not Going<%= radio_button_tag  "not going", "no" %>
-				<% end%>
-		</p>
+		<% going = false %>
+		<% @event.rsvps.each do |r| %>
+			<% if r.user_id == current_user.id %>
+				<% going = true %>
+			<% end %>
+			<% end %>
+
+			<% if going %>
+			 <h2 class="centered">You are going to this event.</h2>
+			 <% else %>
+			 <h2 class="centered">You are not going to this event.</h2>
+			<% end %>
+
+			<% if going %>
+				<div class="col-xs-6 going">
+					<%= link_to "Going" , "#", class:""%>
+				<% else %>
+				<div class="col-xs-6 btn-color">
+					<%= link_to "Going" , "#", class:""%>
+				<% end %>
+				</div>	
+				<div class="col-xs-6 btn-color">	
+					<%= link_to "Not Going", "#",class:" " %>
+				</div>
+				<ul class="col-xs-12">
+				<% @event.rsvps.each do |r| %>
+				<li class="no-list"><%= image_tag r.user.avatar(:thumb), width:"50" %>&nbsp;<%= r.user.full_name %></li>	
+				<% end %>
+				</ul>
+
 
 
 	</div>
