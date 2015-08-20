@@ -13,5 +13,3 @@ categories = Category.create([
 	{name: "Networking", image: "networking.png"}
 ])
 
-events = Event.create([
-  ])

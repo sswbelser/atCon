@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     if current_user
        if post.update_attributes(post_params)
          redirect_to event_path(post.event_id)
-         flash[:notice] = "Successfully updated post:#{post.body}!"
+         flash[:notice] = "Successfully updated this post!"
        else
         flash[:error] = post.errors.full_messages.join(', ')
         redirect_to edit_post_path  
