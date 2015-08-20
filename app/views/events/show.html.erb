@@ -7,6 +7,8 @@
 		<div class="well">
 			<div class="col-sm-8">
 				<ul> 
+					<li>Conference: <%= @event.conference.name %></li>
+
 					<li>Name: <%= @event.name %></li>
 					<li>Cost: $<%= @event.cost %></li>
 					<li>Capacity: <%= @event.capacity %> people</li>
@@ -43,6 +45,7 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<!-- TODO: Placeholder for event.post.user.avatar and event.post.user.name -->
+			  <%= post.user.full_name %>
 			</div>
 			<div class="panel-body">
 				<%= image_tag post.image.url(:thumb), width:"50"%><p><%= post.body %></p>

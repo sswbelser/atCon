@@ -3,18 +3,20 @@ $(function(){
   $("body").on("click", ".edit-btn", function(e){
     e.preventDefault()
 
-    var $body = $(this).prev().find("p").text();
+    var $body = $(this).parent().find("p").first().text();
+    var $f = $(this).siblings("div").find("form");
 
     $("#new-post").toggleClass("hide");
-    $("#edit-post").toggleClass("hide");
-    $("textarea").text($body);
-    getNum($(this));
+    $f.toggleClass("hide");
 
-    function getNum(element){
+    $f.find("textarea").text($body);
+    getNum($(this),$f );
+
+    function getNum(element, f){
       var num = $(element).attr("href");
       num = num.split("/");
       var actionStr = "/posts/"+num[2]
-      $("#edit-post").attr("action", actionStr) 
+      f.attr("action", actionStr) 
     }
   });
 });
