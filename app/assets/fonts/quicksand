@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: font_url('Quicksand-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
