@@ -22,8 +22,8 @@
 			<%= form_for :post, url: posts_path, html:{id:"new-post", method: :post} do |f| %>
 			<div class="form-group">
 				<%= f.hidden_field :event_id,  value: @event.id  %>
-			  <label for="body">Post</label>
-			  <%= f.text_area :body, placeholder: "Enter post.", autofocus: true, class: "form-control" %>
+			  <label for="body">New Post</label>
+			  <%= f.text_area :body, placeholder: "Enter post here", autofocus: true, class: "form-control" %>
 			</div>
 			<div class="form-group">
 			  <label for="image">Image</label>
@@ -36,8 +36,8 @@
 			<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>
 				<%= f.hidden_field :event_id,  value: @event.id  %>
 			<div class="form-group">
-			  <label for="body">Post Edit</label>
-			  <%= f.text_area :body, placeholder: "Enter post", autofocus: true, class: "form-control" %>
+			  <label for="body">Edit Post</label>
+			  <%= f.text_area :body, placeholder: "Edit post here", autofocus: true, class: "form-control" %>
 			</div>
 			<div class="form-group">
 			  <label for="image">Image</label>

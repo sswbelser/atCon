@@ -39,7 +39,6 @@ body {
 	position: static;
 }
 
-
 #conference-jumbotron {
 	border-radius: 0;
 	padding-left: 0px;
@@ -134,10 +133,10 @@ body > nav > div > div.navbar-header > a {
 	color: red;
 }
 
-#new_post .error {
+#new-post .error {
 	color: red;
 }
 
-#edit_post .error {
+#edit-post .error {
 	color: red;
 }
