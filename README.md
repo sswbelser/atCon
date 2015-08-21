@@ -2,6 +2,9 @@
 
 WDI 19/20 Project 2: AtCon (Ruby On Rails)
 
+#Live
+<a href="https://atcon.herokuapp.com/">Heroku Link</a>
+
 #Description
 AtCon is a web app desinged to help convention and tradeshow attendees network through social events. User will be able to create an account, log into their account, create events to host, and select events they want to go to during their conference.
 
