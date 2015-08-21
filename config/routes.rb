@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'abouts/index'
+
 	root "conferences#index"
   
 	resources :users, only: [:create, :update, :index, :destroy]
@@ -19,5 +21,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :rsvp , only: [:create]
+
+	get "/about", to: "abouts#index", as: :about
 end
 
