@@ -24,7 +24,10 @@ Rails.application.routes.draw do
 	resources :conferences, only: [:index, :show]
 
 	resources :events
-	resources :posts , except: [:index, :show]
+	resources :posts , except: [:index, :show] do
+		resources :comments
+	end
+
 
 	resources :rsvp , only: [:create]
 end
