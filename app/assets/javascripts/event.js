@@ -33,6 +33,7 @@ $(function(){
       success: function(data){
         $("#going-btn").addClass("going").removeClass("not-going");
         console.log("this rsvp was added", data);
+        $("not-going-btn").attr("data-r","data.id")
         location.reload();
       },
       error: function(err){
@@ -40,5 +41,27 @@ $(function(){
       }
     });
   }
+  });
+
+  $("body").on("click", "#not-going-btn", function(e){
+
+    var rsvp_event_id = $(this).attr("data-index")
+    var rsvp_user_id = $(this).attr("data-user")
+    var that_rsvp_id = $(this).attr("data-r")
+    $.ajax({
+      url: "/rsvps/"+ that_rsvp_id,
+      type: "DELETE",
+      data: {rsvp:{user_id: rsvp_user_id, event_id: rsvp_event_id }},
+      success: function(data){
+  
+        $("#going-btn").removeClass("going").addClass("not-going");
+        console.log("this rsvp was deleted", data);
+        location.reload();
+      },
+      error: function(err){
+        console.log(err);
+      }
+    });
+  
   });
 });

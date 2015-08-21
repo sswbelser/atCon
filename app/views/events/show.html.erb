@@ -83,9 +83,11 @@
 </div>
 	<div class="col-sm-3">
 		<% going = false %>
+		<% rsvp_id = 0 %>
 		<% @event.rsvps.each do |r| %>
 			<% if r.user_id == current_user.id %>
 				<% going = true %>
+				<% rsvp_id = r.id %>
 			<% end %>
 			<% end %>
 
@@ -96,7 +98,7 @@
 			<% end %>
 
 			<% if going %>
-				<div id="going-btn" class="col-xs-6 going" data-index="<%=@event.id%>">
+				<div id="going-btn" class="col-xs-6 going" data-index="<%=@event.id%> ">
 				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up"></span>Going</a>
 				<% else %>
 				<div id="going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>">
@@ -104,13 +106,13 @@
 
 				<% end %>
 				</div>	
-				<div id="not-going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>">	
+				<div id="not-going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>" data-r="<%=rsvp_id%>">	
 					<a id="not-going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-down"></span>Not Going</a>
 
 				</div>
 				<ul class="col-xs-12">
 				<% @event.rsvps.each do |r| %>
-				<li class="no-list"><%= image_tag r.user.avatar(:thumb), width:"50" %>&nbsp;<%= r.user.full_name %></li>	
+				<li class="no-list" data-index="<%=r.id%>"><%= image_tag r.user.avatar(:thumb), width:"50" %>&nbsp;<%= r.user.full_name %></li>	
 				<% end %>
 				</ul>
 

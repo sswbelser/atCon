@@ -22,6 +22,22 @@ class RsvpsController < ApplicationController
     end
   end
 
+  def destroy
+    if rsvp = Rsvp.find(params[:id])
+      if current_user
+        rsvp.delete
+        flash[:notice] = "Successfully deleted Event!"
+        render nothing: true
+      else
+        flash[:error] = "You need to login in to delete event."
+        redirect_to login_path
+       end
+     else
+      flash[:error] = event.errors.full_messages.join(', ')
+      redirect_to events_path
+    end
+  end
+
   private
     def rsvp_params
       params.require(:rsvp).permit(:user_id, :event_id)
