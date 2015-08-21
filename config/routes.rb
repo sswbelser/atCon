@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'abouts/index'
-
 	root "conferences#index"
   
 	resources :users, only: [:create, :update, :index, :destroy]
