@@ -32,18 +32,13 @@
                   <!-- Placeholder events (will have < % c.events.each % >) -->
                   <div class="event-list row">
                   <div class ="">
-                      <div class="col-md-3 col-xs-6 text-left">
-                       <%= image_tag 'artculture.png', class: "main-images" %>
+                  <% c.events.each do |e| %>
+                    <div class="col-md-3 col-xs-6 text-left">
+                      <%= link_to event_path(e) do %>
+                       <%= image_tag e.category.image, class: "main-images" %>
+                      <% end %>
                    </div>
-                   <div class="col-sm-3 col-xs-6 text-left">
-                       <%= image_tag 'family.png', class: "main-images" %>
-                   </div>
-                   <div class="col-sm-3 col-xs-6 text-left">
-                        <%= image_tag 'fooddrink.png', class: "main-images" %>
-                   </div>
-                   <div class="col-sm-3 col-xs-6 text-left">
-                        <%= image_tag 'fitness.jpg', class: "main-images" %>
-                   </div>
+                   <% end %>
                </div>
            </div>
            <hr>
