@@ -27,11 +27,12 @@
 			</div>
 		</div>
 		<div class="row">
-		<!-- TODO: hide if current_user != event host -->
+		<% if @event.user == current_user %>
 			<div style="text-align: center">
 				<%= link_to "Edit", edit_event_path(@event), class: "btn" %>
 				<%= link_to "Delete", event_path(@event), class: "btn", method: :delete %>
 			</div>
+		<% end %>
 		</div>
 	</div>
 	<!-- new post -->
@@ -52,15 +53,17 @@
 	<% @event.posts.each do |post| %>
 	<div class="panel panel-success">
 		<div class="panel-heading">
-			<ul>
-				<li><%= post.user.full_name %></li>
+			<ul id="post-heading">
 				<li><%= image_tag(post.user.avatar, class: "post-thumb") %></li>
+				<li><%= post.user.full_name %></li>
 			</ul>
 		</div>
 		<div class="panel-body">
-			<%= image_tag post.image.url(:thumb), width:"50"%><p><%= post.body %></p>
+			<%= image_tag post.image.url(:thumb), width:"50"%><h4><%= post.body %></h4>
+			<% if post.user == current_user %>
 			<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_post_path(post), class: "btn edit-btn" %>
 			<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, post_path(post), class: "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
 			<div>
 				<!-- edit post -->
 				<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>
@@ -76,6 +79,26 @@
 				</div>
 				<%= f.submit "Edit Post", class: "btn btn-primary btn-block" %>
 				<% end %>
+			</div>
+			<a id="view-comments-button" role="button" data-toggle="collapse" data-target="#comments-well">View Comments</a>
+				<!-- comments -->
+				<div class="well collapse" id="comments-well">
+					<h4>Comments</h4>
+					<% post.comments.each do |comment| %>
+					<p><%= comment.user.first_name.titleize %>: <%= comment.body %>
+					<% if comment.user == current_user %>	
+					<%= link_to '', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+					</p>
+	    			<% end %>
+					<% end %>
+					<hr>
+					<%= form_for([post, post.comments.build]) do |f| %>
+						<%= f.text_area :body, placeholder: "Enter comment here", autofocus: true, class: "form-control" %>
+						<br>
+						<%= f.submit "Submit Comment", class: "btn btn-default" %>
+					<% end %>
+				</div>
+<!-- comment end -->
 			</div>
 		</div>
 	</div>
