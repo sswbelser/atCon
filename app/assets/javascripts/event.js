@@ -19,4 +19,9 @@ $(function(){
       f.attr("action", actionStr) 
     }
   });
+
+
+  $("body").on("click", "#going", function(e){
+    
+  });
 });
