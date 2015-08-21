@@ -8,141 +8,141 @@ body {
 }
 
 #navbar-right > a.btn.navbar-btn.navbar-right.btn-primary {
-	background-image: linear-gradient(to bottom,#DC4405 0,#B33703 100%);
+    background-image: linear-gradient(to bottom,#DC4405 0,#B33703 100%);
     background-repeat: repeat-x;
     border-color: #DC4405;
 }
 
 .navbar-thumb {
-	height: 30px;
-	width: 30px;
-	border-radius: 50%;
-	position: absolute;
-	display: inline;
-	margin-top: -5px;
-	margin-left: -30px;
-	background-color:rgba(252,177,65,0.2);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    display: inline;
+    margin-top: -5px;
+    margin-left: -30px;
+    background-color:rgba(252,177,65,0.2);
 }
 
 .post-thumb {
-	height: 30px;
-	width: 30px;
-	position: absolute;
-	display: inline;
-	margin-top: -5px;
-	margin-left: 375px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    display: inline;
+    margin-top: -5px;
+    margin-left: 375px;
 }
 
 #conference-jumbotron < img {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 #jumbotron-footer {
-	margin-left: 0px;
-	margin-right: 0px;
-	background-color: #DC4405;
-	margin-top: 303px;
-	position: static;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #DC4405;
+    margin-top: 303px;
+    position: static;
 }
 
 #conference-jumbotron {
-	border-radius: 0;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
+    border-radius: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
 }
 
 .event-list {
-	text-align: center;
+    text-align: center;
 }
 
 .event-image {
-	padding:0px;
-	margin-top:-31px; 
-	width: 100%;
-	padding:1px;
+    /* padding:0px; */
+    /* margin-top:-31px; */ 
+    width: 100%;
+    /* padding:1px; */
 }
 
 
 div.container > div.event-list > div > div:nth-child(1) {
-	padding-right: 0px;
-    padding-left: 15px;
+    /* padding-right: 0px; */
+    /* padding-left: 15px; */
 }
 
 div.container > div.event-list > div > div:nth-child(2) {
-	padding-right: 0px;
-    padding-left: 0px;	
+    /* padding-right: 0px; */
+    /* padding-left: 0px; */  
 }
 
 div.container > div.event-list > div > div:nth-child(3) {
-	padding-right: 0px;
-    padding-left: 0px;	
+    padding-right: 0px;
+    padding-left: 0px;  
 }
 
 div.container > div.event-list > div > div:nth-child(4) {
-	padding-right: 15px;
+    padding-right: 15px;
     padding-left: 0px;
 }
 
 body > div > div.container.event-list > div > div {
-	padding: 0px;
+    padding: 0px;
 }
 
 body > nav > div > div.navbar-header > a {
-	font-size: 28px;
+    font-size: 28px;
 }
 
 #conference-name {
-	text-align: center;
-	color: #fff;
+    text-align: center;
+    color: #fff;
     text-transform: uppercase;
 }
 
 #jumbotron-footer > h4{
-	color: #fff;
+    color: #fff;
 }
 
 .jumbotron {
-	min-height: 450px;
-	background-color:rgba(252,177,65,0.2);
+    min-height: 450px;
+    background-color:rgba(252,177,65,0.2);
 }
 
 .category-image {
-	height: 100px;
-	width: 100px;
+    height: 100px;
+    width: 100px;
 }
 
 .centered {
-	text-align: center;
+    text-align: center;
 }
 
 #new_user .error {
-	color: red;
+    color: red;
 }
 
 #edit_user .error {
-	color: red;
+    color: red;
 }
 
 #login_form .error {
-	color: red;
+    color: red;
 }
 
 #new_event .error {
-	color: red;
+    color: red;
 }
 
 #edit_event .error {
-	color: red;
+    color: red;
 }
 
 #new-post .error {
-	color: red;
+    color: red;
 }
 
 #edit-post .error {
-	color: red;
+    color: red;
 }
 
 #wrapper {
@@ -260,4 +260,9 @@ body > nav > div > div.navbar-header > a {
         position: relative;
         margin-right: 0;
     }
+}
+
+
+img{
+    height: 200px;
 }
