@@ -53,9 +53,9 @@
 	<% @event.posts.each do |post| %>
 	<div class="panel panel-success">
 		<div class="panel-heading">
-			<ul>
-				<li><%= post.user.full_name %></li>
+			<ul id="post-heading">
 				<li><%= image_tag(post.user.avatar, class: "post-thumb") %></li>
+				<li><%= post.user.full_name %></li>
 			</ul>
 		</div>
 		<div class="panel-body">
@@ -80,7 +80,7 @@
 				<%= f.submit "Edit Post", class: "btn btn-primary btn-block" %>
 				<% end %>
 			</div>
-			<a role="button" data-toggle="collapse" data-target="#comments-well">View Comments</a>
+			<a id="view-comments-button" role="button" data-toggle="collapse" data-target="#comments-well">View Comments</a>
 				<!-- comments -->
 				<div class="well collapse" id="comments-well">
 					<h4>Comments</h4>
