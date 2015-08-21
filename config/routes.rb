@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 	resources :events
 	resources :posts , except: [:index, :show]
 
-	resources :rsvp , only: [:create]
+	resources :rsvps , only: [:create]
 end
 

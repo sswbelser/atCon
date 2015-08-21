@@ -96,15 +96,17 @@
 			<% end %>
 
 			<% if going %>
-				<div class="col-xs-6 going">
-					<%= link_to "Going" , "#", class:""%>
+				<div id="going-btn" class="col-xs-6 going" data-index="<%=@event.id%>">
+				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up"></span>Going</a>
 				<% else %>
-				<div class="col-xs-6 btn-color">
-					<%= link_to "Going" , "#", class:""%>
+				<div id="going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>">
+				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up">Going</a>
+
 				<% end %>
 				</div>	
-				<div class="col-xs-6 btn-color">	
-					<%= link_to "Not Going", "#",class:" " %>
+				<div id="not-going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>">	
+					<a id="not-going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-down"></span>Not Going</a>
+
 				</div>
 				<ul class="col-xs-12">
 				<% @event.rsvps.each do |r| %>

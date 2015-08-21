@@ -21,7 +21,24 @@ $(function(){
   });
 
 
-  $("body").on("click", "#going", function(e){
-    
+  $("body").on("click", "#going-btn", function(e){
+
+    if ($(this).hasClass("going") ){
+      console.log("you are already going")
+    }else{
+    $.ajax({
+      url: "/rsvps",
+      type: "POST",
+      data: {rsvp:{event_id: $(this).attr("data-index")}},
+      success: function(data){
+        $("#going-btn").addClass("going").removeClass("not-going");
+        console.log("this rsvp was added", data);
+        location.reload();
+      },
+      error: function(err){
+        console.log(err);
+      }
+    });
+  }
   });
 });
