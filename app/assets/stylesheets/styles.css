@@ -271,3 +271,30 @@ body > nav > div > div.navbar-header > a {
         margin-right: 0;
     }
 }
+
+#about-ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+#about-ul li {
+    display: inline;
+}
+
+#about-ul li a {
+    color: black;
+    text-decoration: underline;
+}
+
+#about-ul li a:hover {
+    background-color: green;
+}
+
+.about-image {
+    height: 500px;
+    border-radius: 25px;
+    padding:1px;
+    border:1px solid black;
+}
