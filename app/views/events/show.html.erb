@@ -107,7 +107,7 @@
 		<% going = false %>
 		<% rsvp_id = 0 %>
 		<% @event.rsvps.each do |r| %>
-			<% if r.user_id == current_user.id %>
+			<% if r.user_id == session[:id] %>
 				<% going = true %>
 				<% rsvp_id = r.id %>
 			<% end %>
