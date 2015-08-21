@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 		resources :comments
 	end
 
-	resources :rsvp , only: [:create]
+	resources :rsvps , only: [:create, :destroy]
 
 	get "/about", to: "abouts#index", as: :about
 end

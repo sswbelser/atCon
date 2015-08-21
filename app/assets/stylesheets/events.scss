@@ -8,16 +8,19 @@
 
 }
 
-.btn-color{
-  background-color: #66FFFF;
-  border: 1px solid #0080FF;
-}
+
 
 .going{
   background-color: #66FF66;
   border: 1px solid #0080FF;
+  height: 3.5em;
 }
+.not-going{
+  background-color: #66FFFF;
+  border: 1px solid #0080FF;
+    height: 3.5em;
 
+}
 ul{
   list-style-type: none;
   margin-top: 10px;
