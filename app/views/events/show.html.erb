@@ -101,7 +101,6 @@
 <!-- comment end -->
 			</div>
 		</div>
-	</div>
 	<% end %>
 </div>
 	<div class="col-sm-3">
@@ -125,7 +124,7 @@
 				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up"></span>Going</a>
 				<% else %>
 				<div id="going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>">
-				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up">Going</a>
+				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up">Going</span></a>
 
 				<% end %>
 				</div>	
@@ -138,7 +137,5 @@
 				<li class="no-list" data-index="<%=r.id%>"><%= image_tag r.user.avatar(:thumb), width:"50" %>&nbsp;<%= r.user.full_name %></li>	
 				<% end %>
 				</ul>
-
-
-
-	</div>
+			</div>
+		</div>

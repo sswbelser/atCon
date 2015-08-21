@@ -1,5 +1,4 @@
 $(function(){
-  console.log("this is working")
   $("body").on("click", ".edit-btn", function(e){
     e.preventDefault()
 
