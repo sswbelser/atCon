@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'posts/new'
-
-  get 'posts/create'
-
-  get 'posts/edit'
-
-  get 'posts/update'
-
-  get 'posts/destroy'
+  get 'abouts/index'
 
 	root "conferences#index"
   
@@ -24,6 +16,12 @@ Rails.application.routes.draw do
 	resources :conferences, only: [:index, :show]
 
 	resources :events
-	resources :posts , except: [:index, :show]
+	resources :posts , except: [:index, :show] do
+		resources :comments
+	end
 
+	resources :rsvps , only: [:create, :destroy]
+
+	get "/about", to: "abouts#index", as: :about
 end
+

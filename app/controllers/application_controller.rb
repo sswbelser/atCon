@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
   end
   # allows us to use `current_user` and 'logged_in?' in views
   helper_method :current_user, :logged_in?
+  
 end

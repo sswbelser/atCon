@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_secure_password
-  has_many :events
+  has_many :rsvps
+  has_many :events, through: :rsvps
   has_many :comments, dependent: :destroy
   has_many :conferences
   validates :email, presence: true, 

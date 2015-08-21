@@ -1,20 +1,24 @@
-<div class="container">
-	<div class="col-sm-3">
-		<h1 class="centered">Placeholder Text for other events</h1>
-	</div>
-	<div class="col-sm-6">
-		<h1 class="centered">Event Page</h1>
-		<div class="well">
-			<div class="row">
+<div class="col-sm-3">
+	<h2 class="centered">Other Events</h2>
+	<% @event.conference.events.each do |e| %>
+		<div class="alert alert-warning">
+			<a href="/events/<%= e.id %>"><%= e.name %></a><br><%= localize(e.start_date, :format => '%m/%d/%Y') %> - <%= localize(e.end_date, :format => '%m/%d/%Y') %><br><%= e.start_time.strftime("%I:%M%p") %> - <%= e.end_time.strftime("%I:%M%p") %>
+		</div>
+	<% end %>
+</div>
+<div class="col-sm-6">
+	<h1 class="centered">Event Page</h1>
+	<div class="well">
+		<div class="row">
 			<div class="col-sm-8">
 				<ul> 
-					<li>Conference: <%= @event.conference.name %></li>
-					<li>Name: <%= @event.name %></li>
-					<li>Cost: $<%= @event.cost %></li>
-					<li>Capacity: <%= @event.capacity %> people</li>
+					<li><%= @event.name %></li>
+					<li>$<%= @event.cost %></li>
+					<li><%= @event.capacity %> people capacity</li>
 					<li><%= localize(@event.start_date, :format => '%m/%d/%Y') %> - <%= localize(@event.end_date, :format => '%m/%d/%Y') %></li>
 					<li><%= @event.start_time.strftime("%I:%M%p") %> - <%= @event.end_time.strftime("%I:%M%p") %></li>
 					<li><a href="http://maps.google.com/?q=<%= @event.address %> <%= @event.city%> <%=@event.state %>"><%= @event.address %>, <%= @event.city%>, <%=@event.state %></a></li>
+					<li>Conference: <%= @event.conference.name %></li>
 				</ul>
 			</div>
 			<div class="col-sm-4">
@@ -23,58 +27,115 @@
 			</div>
 		</div>
 		<div class="row">
-		<!-- TODO: hide if current_user != event host -->
+		<% if @event.user == current_user %>
 			<div style="text-align: center">
 				<%= link_to "Edit", edit_event_path(@event), class: "btn" %>
 				<%= link_to "Delete", event_path(@event), class: "btn", method: :delete %>
 			</div>
-		</div>
-		</div>
-		<!-- new post -->
-		<%= form_for :post, url: posts_path, html:{id:"new-post", method: :post} do |f| %>
-		<%= f.hidden_field :event_id,  value: @event.id %>
-		<div class="form-group">
-			<label for="body">New Post</label>
-			<%= f.text_area :body, placeholder: "Enter post here", autofocus: true, class: "form-control" %>
-		</div>
-		<div class="form-group">
-			<label for="image">Image</label>
-			<%= f.file_field :image %>
-			<p class="help-block">Image is optional</p>
-		</div>
-		<%= f.submit "Add Post", class: "btn btn-primary btn-block" %>
 		<% end %>
-		<hr>
-		<% @event.posts.each do |post| %>
-		<div class="panel panel-success">
-			<div class="panel-heading">
-					<%= post.user.full_name %><%= image_tag(post.user.avatar, class: "post-thumb") %>
+		</div>
+	</div>
+	<!-- new post -->
+	<%= form_for :post, url: posts_path, html:{id:"new-post", method: :post} do |f| %>
+	<%= f.hidden_field :event_id,  value: @event.id %>
+	<div class="form-group">
+		<label for="body">New Post</label>
+		<%= f.text_area :body, placeholder: "Enter post here", autofocus: true, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<label for="image">Image</label>
+		<%= f.file_field :image %>
+		<p class="help-block">Image is optional</p>
+	</div>
+	<%= f.submit "Add Post", class: "btn btn-success btn-block" %>
+	<% end %>
+	<hr>
+	<% @event.posts.each do |post| %>
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<ul id="post-heading">
+				<li><%= image_tag(post.user.avatar, class: "post-thumb") %></li>
+				<li><%= post.user.full_name %></li>
+			</ul>
+		</div>
+		<div class="panel-body">
+			<%= image_tag post.image.url(:thumb), width:"50"%><h4><%= post.body %></h4>
+			<% if post.user == current_user %>
+			<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_post_path(post), class: "btn edit-btn" %>
+			<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, post_path(post), class: "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
+			<div>
+				<!-- edit post -->
+				<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>
+				<%= f.hidden_field :event_id, value: @event.id %>
+				<div class="form-group">
+					<label for="body">Edit Post</label>
+					<%= f.text_area :body, placeholder: "Edit post here", autofocus: true, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<label for="image">Image</label>
+					<%= f.file_field :image %>
+					<p class="help-block">Image is optional</p>
+				</div>
+				<%= f.submit "Edit Post", class: "btn btn-primary btn-block" %>
+				<% end %>
 			</div>
-			<div class="panel-body">
-				<%= image_tag post.image.url(:thumb), width:"50"%><p><%= post.body %></p>
-				<%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_post_path(post), class: "btn edit-btn" %>
-				<%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, post_path(post), class: "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
-				<div>
-					<!-- edit post -->
-					<%= form_for :post, url: post_path, html:{action:"update", method: :put, id:"edit-post", class: "hide"} do |f| %>
-					<%= f.hidden_field :event_id, value: @event.id %>
-					<div class="form-group">
-						<label for="body">Edit Post</label>
-						<%= f.text_area :body, placeholder: "Edit post here", autofocus: true, class: "form-control" %>
-					</div>
-					<div class="form-group">
-						<label for="image">Image</label>
-						<%= f.file_field :image %>
-						<p class="help-block">Image is optional</p>
-					</div>
-					<%= f.submit "Edit Post", class: "btn btn-primary btn-block" %>
+			<a id="view-comments-button" role="button" data-toggle="collapse" data-target="#comments-well">View Comments</a>
+				<!-- comments -->
+				<div class="well collapse" id="comments-well">
+					<h4>Comments</h4>
+					<% post.comments.each do |comment| %>
+					<p><%= comment.user.first_name.titleize %>: <%= comment.body %>
+					<% if comment.user == current_user %>	
+					<%= link_to '', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %>
+					</p>
+	    			<% end %>
+					<% end %>
+					<hr>
+					<%= form_for([post, post.comments.build]) do |f| %>
+						<%= f.text_area :body, placeholder: "Enter comment here", autofocus: true, class: "form-control" %>
+						<br>
+						<%= f.submit "Submit Comment", class: "btn btn-default" %>
 					<% end %>
 				</div>
+<!-- comment end -->
 			</div>
 		</div>
-		<% end %>
-	</div>
-	<div class="col-sm-3">
-		<h1 class="centered">Placeholder Text for other event attendees</h1>
-	</div>
+	<% end %>
 </div>
+	<div class="col-sm-3">
+		<% going = false %>
+		<% rsvp_id = 0 %>
+		<% @event.rsvps.each do |r| %>
+			<% if r.user_id == current_user.id %>
+				<% going = true %>
+				<% rsvp_id = r.id %>
+			<% end %>
+			<% end %>
+
+			<% if going %>
+			 <h3 class="centered">Attending</h3>
+			 <% else %>
+			 <h3 class="centered">Not Attending</h3>
+			<% end %>
+
+			<% if going %>
+				<div id="going-btn" class="col-xs-6 going" data-index="<%=@event.id%> ">
+				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up"></span>Going</a>
+				<% else %>
+				<div id="going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>">
+				<a id="going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-up">Going</span></a>
+
+				<% end %>
+				</div>	
+				<div id="not-going-btn" class="col-xs-6 not-going" data-index="<%=@event.id%>" data-r="<%=rsvp_id%>">	
+					<a id="not-going-link" href="javascript:void(0)"  class="" data-index="<%=@event.id%>"><span class="glyphicon glyphicon-thumbs-down"></span>Not Going</a>
+
+				</div>
+				<ul class="col-xs-12">
+				<% @event.rsvps.each do |r| %>
+				<li class="no-list" data-index="<%=r.id%>"><%= image_tag r.user.avatar(:thumb), width:"50" %>&nbsp;<%= r.user.full_name %></li>	
+				<% end %>
+				</ul>
+			</div>
+		</div>

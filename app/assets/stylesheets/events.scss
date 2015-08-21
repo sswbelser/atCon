@@ -1,3 +1,55 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.no-list{
+
+}
+
+div.going, div.not-going{
+  padding: 5px;
+}
+div.going:hover, div.not-going:hover{
+  background-color: #EFA63F;
+  padding: 5px;
+}
+#going-link:hover{
+  color:black;
+}
+a#going-link{
+  color:black;
+}
+
+a:hover{
+  text-decoration: none;
+}
+#not-going-link{
+  color: black;
+}
+
+.glyphicon-thumbs-up, .glyphicon-thumbs-down{
+  color:black;
+  font-size: 1em;
+}
+
+.going{
+  background-color: #2396C8; 
+  color: black;
+  border: 1px solid black;
+  height: 3.5em;
+}
+.not-going{
+  background-color: #dc4405;
+  color:black;
+  border: 1px solid black;
+  height: 3.5em;
+}
+ul{
+  list-style-type: none;
+  margin-top: 10px;
+}
+ul li{
+  padding: 5px;
+}
