@@ -71,12 +71,12 @@ class EventsController < ApplicationController
   end
 
 	def show
-    if Event.find_by_id(params[:id])
+    if Event.find_by_id(params[:id]) && current_user
 		  @event = Event.find(params[:id])
 		  render :show
     else
-      flash[:error] = "Could not find event #{params[:id]}"
-    redirect_to root_path
+      flash[:error] = "You must be logged in to view individual events."
+      redirect_to login_path
    end
 	end
 
