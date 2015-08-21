@@ -21,7 +21,9 @@ Category, Comment, Conference, Event, Post, RSVP, User.
 Technologies used: Ruby on Rails, Bootstrap, jQuery, jQuery Validation, AJAX, Paperclip, AWS SDK, RSpec, LinkedIn API, Bcrypt, PostgreSQL, GitHub, and Heroku.
 
 #Contributors
-<a href="https://github.com/sswbelser">Sabastian Belser</a>
-<a href="https://github.com/Kara9125">Kara Nicholas</a>
-<a href="https://github.com/owl975">Matthew Gomez</a>
-<a href="https://github.com/goodbedford">Bedford Williamson</a>
+<ul>
+	<li><a href="https://github.com/sswbelser">Sabastian Belser</a></li>
+	<li><a href="https://github.com/Kara9125">Kara Nicholas</a></li>
+	<li><a href="https://github.com/owl975">Matthew Gomez</a></li>
+	<li><a href="https://github.com/goodbedford">Bedford Williamson</a></li>
+</ul>
