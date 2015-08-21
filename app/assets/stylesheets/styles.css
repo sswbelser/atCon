@@ -39,6 +39,10 @@ body {
     display: inline;
 }
 
+#comments-well hr {
+    border-color: black;
+}
+
 #conference-jumbotron < img {
 	width: 100%;
 	height: 100%;

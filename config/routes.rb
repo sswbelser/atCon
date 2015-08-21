@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'posts/new'
-
-  get 'posts/create'
-
-  get 'posts/edit'
-
-  get 'posts/update'
-
-  get 'posts/destroy'
-
 	root "conferences#index"
   
 	resources :users, only: [:create, :update, :index, :destroy]
@@ -27,7 +17,6 @@ Rails.application.routes.draw do
 	resources :posts , except: [:index, :show] do
 		resources :comments
 	end
-
 
 	resources :rsvp , only: [:create]
 end
